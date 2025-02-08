@@ -1,0 +1,65 @@
+/*
+polymorphism-->one name and multiple forms
+eg ->function overloding ,operator overloding 
+eg->vritual function
+# ploymorphism in c++ can be of two types 
+1 compile time ploymorphism
+1.1 function overloadig
+1.2 operator overloadig
+2.run time polymorphism
+2.1-virtual function 
+ 
+*/
+//run time polymorphism
+#include<iostream>
+using namespace std;
+
+
+class baseclass{
+    public:
+
+    int base_var;
+    void display(){
+        cout<<"displaying  base class variable  base_var "<<base_var<<endl;
+        
+    }
+
+
+
+
+};
+
+
+class derivedclass : public baseclass{
+    
+    public:
+
+   
+
+    int var_derived;
+    void display(){
+        cout<<"displaying base class variable base_var "<<base_var<<endl;
+
+        cout<<"displaying derived class variable var_derived "<<var_derived<<endl;
+    } 
+};
+int main(){
+    baseclass *base_class_pointer;
+    baseclass obj_base;
+    derivedclass obj_derived;
+    base_class_pointer=&obj_derived;//pointing base class pointer t0 derived class
+    base_class_pointer->base_var=43;
+    base_class_pointer->base_var=4300;
+   // base_class_pointer->var_derived=143; will give to error
+    base_class_pointer->display();
+
+   derivedclass *derived_class_pointer;
+   derived_class_pointer=&obj_derived;
+   derived_class_pointer->var_derived=98;
+   derived_class_pointer->base_var=65;
+   derived_class_pointer->display();
+
+    return 0;
+
+
+}
